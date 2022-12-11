@@ -13,6 +13,10 @@ public class ReplaceTempWithQuery2 {
     //TODO : 임시변수에 값이 여러번 대입되는 케이스
     // 메소드설명 : 임시변수에 값이 두 번 할당되는 케이스를 만든 것
     public double getPrice() {
+        return finalBasePrice();
+    }
+
+    private double finalBasePrice() {
         return getBasePrice() * getDiscountFactor() * 2;
     }
 
