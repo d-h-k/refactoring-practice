@@ -72,17 +72,29 @@ public class AntPathMatcher {
 		boolean uriVar = false;
 		for (int i = 0; i < path.length(); i++) {
 			char c = path.charAt(i);
-			if (c == '*' || c == '?') {
+			if (run(c)) {
 				return true;
 			}
-			if (c == '{') {
+			if (run2(c)) {
 				uriVar = true;
 				continue;
 			}
-			if (c == '}' && uriVar) {
+			if (run3(c,uriVar)) {
 				return true;
 			}
 		}
 		return false;
 	}
+	private boolean run(char currentChar){
+		return( currentChar == '*' || currentChar == '?');
+	}
+
+	private boolean run2(char currentChar2){
+		return (currentChar2 == '{');
+	}
+
+	private  boolean run3(char currentChar3, boolean uriVar){
+		return (currentChar3 == '}' && uriVar);
+	}
+
 }
