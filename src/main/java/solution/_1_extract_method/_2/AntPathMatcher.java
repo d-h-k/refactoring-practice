@@ -70,8 +70,9 @@ public class AntPathMatcher {
 	// 메소드설명 : 빌드툴 Ant 코드 중 경로패턴에 맞는지 체크하는 메소드
 	public boolean isPattern(String path) {
 		boolean uriVar = false;
-		for (int i = 0; i < path.length(); i++) {
-			char c = path.charAt(i);
+
+		for (char c : path.toCharArray()) {
+			//char c = path.charAt(i);
 			if (isTerminalChar(c)) {
 				return true;
 			}
