@@ -72,29 +72,29 @@ public class AntPathMatcher {
 		boolean uriVar = false;
 		for (int i = 0; i < path.length(); i++) {
 			char c = path.charAt(i);
-			if (run(c)) {
+			if (isTerminalChar(c)) {
 				return true;
 			}
-			if (run2(c)) {
+			if (괄호의시작(c)) {
 				uriVar = true;
 				continue;
 			}
-			if (run3(c,uriVar)) {
+			if (괄호의끝(c,uriVar)) {
 				return true;
 			}
 		}
 		return false;
 	}
-	private boolean run(char currentChar){
+	private boolean isTerminalChar(char currentChar){
 		return( currentChar == '*' || currentChar == '?');
 	}
 
-	private boolean run2(char currentChar2){
-		return (currentChar2 == '{');
+	private boolean 괄호의시작(char currentChar){
+		return (currentChar == '{');
 	}
 
-	private  boolean run3(char currentChar3, boolean uriVar){
-		return (currentChar3 == '}' && uriVar);
+	private  boolean 괄호의끝(char currentChar, boolean uriVar){
+		return (currentChar == '}' && uriVar);
 	}
 
 }
